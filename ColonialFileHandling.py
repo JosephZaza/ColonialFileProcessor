@@ -10,7 +10,8 @@ from tkinter import ttk
 # Set up folder paths
 source = 'C:\\Users\\UCC_TECH\\Videos\\CurrentWeek'
 moveTarget = 'C:\\Users\\UCC_TECH\\Videos\\PreviousWeek'
-copyTarget = 'G:\\My Drive'
+backupTarget = 'G:\\My Drive'
+copyTarget = 'G:\\My Drive\\Files Shared with Balcony Camera System'
 
 # Set up fonts
 LARGE_FONT = ("Verdana", 12)
@@ -37,7 +38,14 @@ class Popupmsg1():
     # @param copyTarget target directory for copying files
     # @param moveTarget target directory for moving files
     def processFiles(self):
-        # Copy files
+        # Copy files for backup
+        src_files = os.listdir(source)
+        for file_name in src_files:
+            full_file_name = os.path.join(source, file_name)
+            if os.path.isfile(full_file_name):
+                shutil.copy(full_file_name, backupTarget)
+
+        # Copy files for work
         src_files = os.listdir(source)
         for file_name in src_files:
             full_file_name = os.path.join(source, file_name)
