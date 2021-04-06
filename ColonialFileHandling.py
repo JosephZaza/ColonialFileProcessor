@@ -7,11 +7,25 @@ import shutil
 import tkinter as tk
 from tkinter import ttk
 
+# Read file for folder paths
+f = open("FolderPaths.txt", "r")
+# Read first descriptive line
+f.readline()
+
 # Set up folder paths
-source = 'C:\\Users\\UCC_TECH\\Videos\\CurrentWeek'
-moveTarget = 'C:\\Users\\UCC_TECH\\Videos\\PreviousWeek'
-backupTarget = 'G:\\My Drive'
-copyTarget = 'G:\\My Drive\\Files Shared with Balcony Camera System'
+source = f.readline() # C:\Users\UCC_TECH\Videos\CurrentWeek
+moveTarget = f.readline() # C:\Users\UCC_TECH\Videos\PreviousWeek
+backupTarget = f.readline() # G:\My Drive
+copyTarget = f.readline() # G:\My Drive\Files Shared with Balcony Camera System
+
+# Confirm set up
+print(source)
+print(moveTarget)
+print(backupTarget)
+print(copyTarget)
+
+# Close file
+f.close()
 
 # Set up fonts
 LARGE_FONT = ("Verdana", 12)
@@ -19,13 +33,17 @@ NORM_FONT = ("Verdana", 10)
 SMALL_FONT = ("Verdana", 8)
 
 
-# Popupmsg1 is a class representing the first popup window to run when the program is started.
-class Popupmsg1():
+# popupmsg1 is a class representing the first popup window to run when the program is started.
+class Popupmsg1:
     def __init__(self, master):
         self.master = master
         self.frame = tk.Frame(self.master)
-        label = ttk.Label(self.frame, text="Warning: this will process files in multiple folders including deleting "
-                                           "several.\nDo you wish to continue?", font=NORM_FONT)
+        label = ttk.Label(
+            self.frame,
+            text="Warning: this will process files in multiple folders including deleting "
+            "several.\nDo you wish to continue?",
+            font=NORM_FONT,
+        )
         label.pack(side="top", fill="x", pady=10)
         B1 = ttk.Button(self.frame, text="Process files", command=self.processFiles)
         B2 = ttk.Button(self.frame, text="Do not process", command=self.quit)
@@ -61,7 +79,7 @@ class Popupmsg1():
                 elif os.path.isdir(file_path):
                     shutil.rmtree(file_path)
             except Exception as e:
-                print('Failed to delete %s. Reason: %s' % (file_path, e))
+                print("Failed to delete %s. Reason: %s" % (file_path, e))
 
         # Move files
         file_names = os.listdir(source)
@@ -74,7 +92,7 @@ class Popupmsg1():
         self.app = Popupmsg2(self.master)  # create Demo2 window
         self.master.mainloop()
 
-    # quite closes out the current window and opens the Finished window.
+    # Quit closes out the current window and opens the Finished window.
     def quit(self):
         self.master.destroy()  # close the current window
         self.master = tk.Tk()  # create another Tk instance
@@ -83,7 +101,7 @@ class Popupmsg1():
 
 
 # Popupmsg2
-class Popupmsg2():
+class Popupmsg2:
     def __init__(self, master):
         self.master = master
         self.frame = tk.Frame(self.master)
@@ -102,6 +120,7 @@ def main():
     root = tk.Tk()
     app = Popupmsg1(root)
     root.mainloop()
+
 
 if __name__ == "__main__":
     main()

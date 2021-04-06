@@ -5,8 +5,8 @@ import os
 import shutil
 
 # Set up folder paths
-source = 'C:\\Users\\Joey\'s Desktop\\Desktop\\source'
-target = 'C:\\Users\\Joey\'s Desktop\\Desktop\\copy'
+source = "C:\\Users\\Joey's Desktop\\Desktop\\source"
+target = "C:\\Users\\Joey's Desktop\\Desktop\\copy"
 
 # Copy all files
 src_files = os.listdir(source)

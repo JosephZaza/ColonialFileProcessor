@@ -5,8 +5,8 @@ import shutil
 import os
 
 # Set up folder paths
-source = 'C:\\Users\\Joey\'s Desktop\\Desktop\\source'
-target = 'C:\\Users\\Joey\'s Desktop\\Desktop\\target'
+source = "C:\\Users\\Joey's Desktop\\Desktop\\source"
+target = "C:\\Users\\Joey's Desktop\\Desktop\\target"
 
 # Delete all files
 for filename in os.listdir(target):
@@ -17,7 +17,7 @@ for filename in os.listdir(target):
         elif os.path.isdir(file_path):
             shutil.rmtree(file_path)
     except Exception as e:
-        print('Failed to delete %s. Reason: %s' % (file_path, e))
+        print("Failed to delete %s. Reason: %s" % (file_path, e))
 
 # Move all files
 file_names = os.listdir(source)

@@ -1,0 +1,5 @@
+Folders need to be placed in the following order: source, moveTarget, backupTarget, copyTarget
+C:\Users\UCC_TECH\Videos\CurrentWeek
+C:\Users\UCC_TECH\Videos\PreviousWeek
+G:\My Drive
+G:\My Drive\Files Shared with Balcony Camera System
