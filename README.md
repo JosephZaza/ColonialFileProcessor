@@ -1,4 +1,4 @@
-# TheMaze
+# ColonialFileProcessor
 A simple file processing program.
 
 ## Installation
